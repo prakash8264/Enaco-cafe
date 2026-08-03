@@ -8,11 +8,9 @@
 
 :root {
   /* Core Palette - Warm Cream, Terracotta & Deep Charcoal */
-  --color-primary-50: #FFFDF9;
   --color-primary-100: #FAF4EC;
   --color-primary-200: #F3E6D5;
   --color-primary-300: #D8B493;
-  --color-primary-400: #8C5A3C;
   --color-primary-500: #1C1713;
   /* Deep Charcoal / Espresso */
 
@@ -20,7 +18,6 @@
   --color-accent-500: #E05638;
   /* Primary Terracotta Action */
   --color-accent-400: #EA7055;
-  --color-accent-100: #FCECE8;
 
   /* Neutral Warm Backgrounds */
   --bg-body: #FFF8F0;
@@ -49,8 +46,6 @@
   /* Radius Tokens */
   --radius-sm: 12px;
   --radius-md: 16px;
-  --radius-lg: 20px;
-  --radius-full: 9999px;
 
   /* Transition Speeds */
   --transition-fast: 0.15s ease;
@@ -95,7 +90,6 @@ a {
 
 button,
 input,
-select,
 textarea {
   font-family: inherit;
   font-size: inherit;
@@ -108,9 +102,6 @@ button {
   cursor: pointer;
 }
 
-ul {
-  list-style: none;
-}
 
 /* Utility Classes & Layout Containers */
 
