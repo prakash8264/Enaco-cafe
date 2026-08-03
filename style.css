@@ -611,22 +611,6 @@ ul {
 
 .bento-card-large .bento-desc {
   color: var(--color-primary-200);
-  margin-top: 0.75rem;
-}
-
-.bento-card-large .bento-price {
-  font-size: 1.6rem;
-}
-
-.bento-badge {
-  margin-bottom: 1rem;
-}
-
-.bento-action-wrap {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
 }
 
 .bento-img-wrap {
@@ -1314,7 +1298,7 @@ ul {
   line-height: 1.6;
 }
 
-/* Contact & Reservation Section */
+/*  FAQ Accordion */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;

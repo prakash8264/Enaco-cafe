@@ -1,9 +1,13 @@
+/* ==========================================================================
+   AROMA CRAFT COFFEE SHOP - INTERACTIVE JAVASCRIPT
+   Vanilla JavaScript for Navbar, Sliders, Menu Filtering, Accordion, Lightbox & Forms
+   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  //   Active Nav Link Scroll Spy
-
-
+  /* --------------------------------------------------------------------------
+     1. Active Nav Link Scroll Spy
+     -------------------------------------------------------------------------- */
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
 
@@ -27,10 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', handleScrollSpy);
 
-
-  //  Mobile Hamburger Menu Drawer
-
-
+  /* --------------------------------------------------------------------------
+     2. Mobile Hamburger Menu Drawer
+     -------------------------------------------------------------------------- */
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
 
@@ -51,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  //   Interactive Menu Category Filter
-
-
+  /* --------------------------------------------------------------------------
+     4. Interactive Menu Category Filter
+     -------------------------------------------------------------------------- */
   const menuTabs = document.querySelectorAll('.menu-tab-btn');
   const menuCards = document.querySelectorAll('.menu-card');
 
@@ -75,10 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-
-
-  // FAQ Accordion (Simple Single Item Open Only)
-
+  /* --------------------------------------------------------------------------
+     5. FAQ Accordion (Simple Single Item Open Only)
+     -------------------------------------------------------------------------- */
   const faqItems = document.querySelectorAll('.faq-item');
 
   faqItems.forEach(item => {
@@ -102,8 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  //   Simple Photo Gallery Lightbox
-
+  /* --------------------------------------------------------------------------
+     6. Simple Photo Gallery Lightbox
+     -------------------------------------------------------------------------- */
   const galleryItems = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
@@ -157,8 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  //   Simple Testimonial Slider (Continuous 1-Direction Infinite Loop)
-
+  /* --------------------------------------------------------------------------
+     7. Simple Testimonial Slider (Continuous 1-Direction Infinite Loop)
+     -------------------------------------------------------------------------- */
   const track = document.querySelector(".testimonial-track");
   const cards = document.querySelectorAll(".testimonial-card");
   const prevBtn = document.querySelector(".testimonial-prev");
@@ -170,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let isTransitioning = false; // Transition lock flag to prevent rapid-click bugs
 
   // Clone cards once for continuous infinite scroll
-
   if (track && cards.length) {
     cards.forEach(card => {
       track.appendChild(card.cloneNode(true));
@@ -179,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function updateSlider() {
-    if (!track || !cards.length) return;
     const cardWidth = cards[0].offsetWidth;
     const gap = 24;
     const moveDistance = (cardWidth + gap) * currentIndex;
@@ -270,8 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateSlider();
   startAutoSlide();
 
-  // Contact Form Validation
-
+  /* --------------------------------------------------------------------------
+     8. Contact Form Validation
+     -------------------------------------------------------------------------- */
   const contactForm = document.getElementById('contactForm');
   const successAlert = document.getElementById('formSuccessAlert');
 
@@ -328,8 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  //   Newsletter Subscription Validation
-
+  /* --------------------------------------------------------------------------
+     9. Newsletter Subscription Validation
+     -------------------------------------------------------------------------- */
   const newsletterForm = document.querySelector('.newsletter-form');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', (e) => {
@@ -344,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  //   Item Order Modal Popup and Toast Notification
+  //   Item Order Modal Popup & Neubrutalist Toast Notification
 
   const orderModal = document.getElementById('orderModal');
   const orderModalImg = document.getElementById('orderModalImg');
@@ -366,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => {
       toast.classList.remove('show');
-    }, 2000);
+    }, 3500);
   }
 
   let activeItemName = 'Coffee Item';
@@ -384,10 +388,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const priceEl = card.querySelector('.bento-price, .menu-card-price');
     const descEl = card.querySelector('.bento-desc, .menu-card-desc');
 
-    activeItemName = titleEl.textContent;
-    const priceText = priceEl.textContent;
-    const imgSrc = imgEl.src;
-    const descText = descEl.textContent;
+    activeItemName = titleEl ? titleEl.textContent.trim() : 'Coffee Item';
+    const priceText = priceEl ? priceEl.textContent.trim() : '';
+    const imgSrc = imgEl ? imgEl.src : '';
+    const descText = descEl ? descEl.textContent.trim() : 'Freshly crafted with organic, ethically sourced ingredients.';
 
     if (orderModalImg) {
       orderModalImg.src = imgSrc;
