@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentIndex = 0;
   let autoSlide;
-  let isTransitioning = false; // Transition lock flag to prevent rapid-click bugs
+  let isTransitioning = false; 
 
   // Clone cards once for continuous infinite scroll
 
