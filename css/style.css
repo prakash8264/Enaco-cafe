@@ -8,16 +8,32 @@
   --color-primary-500: #1C1713;
   /* Deep Charcoal / Espresso */
 
+  /* Neutral Base Colors */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
   /* Terracotta Orange / Burnt Coral (Exact match from reference demo) */
   --color-accent-500: #E05638;
   /* Primary Terracotta Action */
   --color-accent-400: #EA7055;
 
+  /* Status & Rating Colors */
+  --color-star: #FFB800;
+  --color-danger: #D9534F;
+  --color-success: #2E7D32;
+  --bg-success: #E8F5E9;
+
   /* Neutral Warm Backgrounds */
   --bg-body: #FFF8F0;
   /* Warm Light Cream */
-  --bg-card: #FFFFFF;
+  --bg-card: var(--color-white);
   --bg-card-alt: #FAF4EC;
+
+  /* Translucent Overlay Variables */
+  --border-white-translucent: rgba(255, 255, 255, 0.3);
+  --border-white-dashed: rgba(255, 255, 255, 0.2);
+  --bg-white-translucent-sm: rgba(255, 255, 255, 0.08);
+  --bg-white-translucent-md: rgba(255, 255, 255, 0.1);
 
   /* Text Colors */
   --text-main: #1C1713;
@@ -59,7 +75,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  scroll-padding-top: 100px;
 }
 
 body {
@@ -223,7 +239,7 @@ button {
 
 .btn-primary {
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 .btn-primary:hover {
@@ -233,7 +249,7 @@ button {
 }
 
 .btn-secondary {
-  background-color: #FFFFFF;
+  background-color: var(--color-white);
   color: var(--color-primary-500);
 }
 
@@ -261,7 +277,7 @@ button {
 
 .badge-terracotta {
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 /* 4. Header & Boxed Navbar */
@@ -419,7 +435,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #FFFFFF;
+  background-color: var(--color-white);
   color: var(--color-primary-500);
   border: var(--border-dark);
   padding: 0.4rem 1rem;
@@ -579,7 +595,7 @@ button {
   gap: 2rem;
   align-items: center;
   background-color: var(--color-primary-500);
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 @media (min-width: 992px) {
@@ -590,7 +606,7 @@ button {
 }
 
 .bento-card-large .bento-title {
-  color: #FFFFFF;
+  color: var(--color-white);
   font-size: 1.85rem;
 }
 
@@ -620,7 +636,7 @@ button {
   overflow: hidden;
   height: 220px;
   margin-bottom: 1.25rem;
-  background-color: #000;
+  background-color: var(--color-black);
 }
 
 .bento-card-large .bento-img-wrap {
@@ -725,7 +741,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
   border: var(--border-dark);
   box-shadow: var(--shadow-offset);
   width: 110px;
@@ -797,7 +813,7 @@ button {
   padding: 0.65rem 1.6rem;
   border-radius: var(--radius-sm);
   border: var(--border-dark);
-  background-color: #FFFFFF;
+  background-color: var(--color-white);
   color: var(--text-main);
   font-weight: 700;
   font-size: 0.95rem;
@@ -813,7 +829,7 @@ button {
 
 .menu-tab-btn.active {
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
   box-shadow: var(--shadow-offset);
 }
 
@@ -1069,7 +1085,7 @@ button {
   position: absolute;
   top: 25px;
   right: 30px;
-  color: #FFFFFF;
+  color: var(--color-white);
   font-size: 2.2rem;
   font-weight: bold;
   cursor: pointer;
@@ -1088,7 +1104,7 @@ button {
   top: 50%;
   transform: translateY(-50%);
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
   border: var(--border-dark);
   border-radius: var(--radius-sm);
   width: 44px;
@@ -1198,7 +1214,7 @@ button {
 }
 
 .rating-stars {
-  color: #FFB800;
+  color: var(--color-star);
   font-size: 1.1rem;
 }
 
@@ -1226,7 +1242,7 @@ button {
 
 .testimonial-btn:hover {
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
   transform: translate(-2px, -2px);
 }
 
@@ -1282,7 +1298,7 @@ button {
 .faq-item.active .faq-icon {
   transform: rotate(180deg);
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 .faq-content {
@@ -1314,7 +1330,7 @@ button {
 
 .contact-info-card {
   background-color: var(--color-primary-500);
-  color: #FFFFFF;
+  color: var(--color-white);
   border: var(--border-dark);
   border-radius: var(--radius-md);
   padding: 3rem 2.5rem;
@@ -1325,7 +1341,7 @@ button {
 }
 
 .contact-info-card .section-title {
-  color: #FFFFFF;
+  color: var(--color-white);
   text-align: left;
 }
 
@@ -1346,8 +1362,8 @@ button {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid var(--border-white-translucent);
+  background-color: var(--bg-white-translucent-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1368,7 +1384,7 @@ button {
 }
 
 .map-container {
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border: 1.5px solid var(--border-white-translucent);
   border-radius: var(--radius-sm);
   overflow: hidden;
   height: 200px;
@@ -1415,7 +1431,7 @@ button {
 
 .form-input:focus,
 .form-textarea:focus {
-  background-color: #FFFFFF;
+  background-color: var(--color-white);
   box-shadow: var(--shadow-offset-sm);
 }
 
@@ -1425,7 +1441,7 @@ button {
 }
 
 .error-message {
-  color: #D9534F;
+  color: var(--color-danger);
   font-weight: 700;
   font-size: 0.8rem;
   display: none;
@@ -1437,14 +1453,14 @@ button {
 
 .form-group.error .form-input,
 .form-group.error .form-textarea {
-  border-color: #D9534F;
+  border-color: var(--color-danger);
 }
 
 .form-success-alert {
   display: none;
-  background-color: #E8F5E9;
+  background-color: var(--bg-success);
   border: var(--border-dark);
-  color: #2E7D32;
+  color: var(--color-success);
   padding: 1rem;
   border-radius: var(--radius-sm);
   margin-bottom: 1.5rem;
@@ -1466,7 +1482,7 @@ button {
   grid-template-columns: 1fr;
   gap: 3rem;
   padding-bottom: 4rem;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  border-bottom: 1px dashed var(--border-white-dashed);
 }
 
 @media (min-width: 768px) {
@@ -1476,7 +1492,7 @@ button {
 }
 
 .footer-brand .logo {
-  color: #FFFFFF;
+  color: var(--color-white);
   margin-bottom: 1rem;
 }
 
@@ -1499,9 +1515,9 @@ button {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  border: 1.5px solid var(--border-white-translucent);
+  background-color: var(--bg-white-translucent-sm);
+  color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1523,12 +1539,12 @@ button {
 
 .social-icon:hover {
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
   transform: translate(-2px, -2px);
 }
 
 .footer-column-title {
-  color: #FFFFFF;
+  color: var(--color-white);
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
@@ -1562,9 +1578,9 @@ button {
 .newsletter-input {
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  border: 1.5px solid var(--border-white-translucent);
+  background-color: var(--bg-white-translucent-sm);
+  color: var(--color-white);
   width: 100%;
   font-size: 0.875rem;
 }
@@ -1653,7 +1669,7 @@ button {
 .order-modal-close:hover {
   transform: scale(1.1);
   background-color: var(--color-accent-500);
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 .order-modal-img-wrap {
@@ -1714,7 +1730,7 @@ button {
   align-items: center;
   gap: 0.85rem;
   background-color: var(--color-primary-500);
-  color: #FFFFFF;
+  color: var(--color-white);
   border: var(--border-dark);
   box-shadow: 4px 4px 0px var(--color-accent-500);
   border-radius: var(--radius-sm);

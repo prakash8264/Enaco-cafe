@@ -51,11 +51,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  //   Menu Items Data & Dynamic Rendering
+
+
+  const menuItems = [
+    {
+      name: "Espresso Ristretto",
+      price: "₹140",
+      category: "espresso",
+      image: "./asset/images/menu/Double_Espresso_Ristretto.avif",
+      alt: "Double Espresso Ristretto",
+      description: "Short intense shot of double espresso with dark chocolate undertones.",
+      badge: "Classic"
+    },
+    {
+      name: "Classic Cappuccino",
+      price: "₹180",
+      category: "latte",
+      image: "./asset/images/menu/Classic_Cappuccino.avif",
+      alt: "Classic Cappuccino",
+      description: "Equal parts espresso, steamed milk, and velvety milk foam topped with cocoa dust.",
+      badge: "Popular"
+    },
+    {
+      name: "Hazelnut Latte",
+      price: "₹210",
+      category: "latte",
+      image: "./asset/images/menu/Hazelnut_Latte.webp",
+      alt: "Hazelnut Latte",
+      description: "Smooth espresso with microfoam oat milk and natural roasted hazelnut flavor.",
+      badge: "Best Seller"
+    },
+    {
+      name: "Vanilla Cold Brew",
+      price: "₹210",
+      category: "cold-brew",
+      image: "./asset/images/menu/Vanilla_Sweet_Cold_Brew.avif",
+      alt: "Vanilla Sweet Cold Brew",
+      description: "Slow-steeped cold brew topped with house-made vanilla sweet cream foam.",
+      badge: "Refreshing"
+    },
+    {
+      name: "Artisan Croissant",
+      price: "₹150",
+      category: "pastries",
+      image: "./asset/images/menu/French_Butter_Croissant.avif",
+      alt: "French Butter Croissant",
+      description: "Flaky, golden French butter croissant baked fresh every morning.",
+      badge: "Fresh"
+    },
+    {
+      name: "Espresso Tiramisu",
+      price: "₹240",
+      category: "desserts",
+      image: "./asset/images/menu/Chocolate_Tiramisu.avif",
+      alt: "Chocolate Tiramisu",
+      description: "Traditional Italian ladyfingers soaked in espresso, layered with mascarpone.",
+      badge: "Chef Choice"
+    }
+  ];
+
+  function displayMenuItems(itemsToDisplay) {
+    const menuGrid = document.querySelector('.menu-grid');
+    if (!menuGrid) return;
+
+    menuGrid.innerHTML = itemsToDisplay.map(item => `
+      <article class="menu-card" data-category="${item.category}">
+        <div class="menu-img-container">
+          <img src="${item.image}" alt="${item.alt}">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-top">
+            <h3 class="menu-card-title">${item.name}</h3>
+            <span class="menu-card-price">${item.price}</span>
+          </div>
+          <p class="menu-card-desc">${item.description}</p>
+          <div class="menu-card-bottom">
+            <span class="badge badge-terracotta">${item.badge}</span>
+            <button type="button" class="btn btn-secondary btn-sm btn-order">Order</button>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // Render all menu items on initial page load
+  displayMenuItems(menuItems);
+
   //   Interactive Menu Category Filter
 
 
   const menuTabs = document.querySelectorAll('.menu-tab-btn');
-  const menuCards = document.querySelectorAll('.menu-card');
 
   menuTabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -64,14 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const filterValue = tab.getAttribute('data-filter');
 
-      menuCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filterValue === 'all' || category === filterValue) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+      if (filterValue === 'all') {
+        displayMenuItems(menuItems);
+      } else {
+        const filteredItems = menuItems.filter(item => item.category === filterValue);
+        displayMenuItems(filteredItems);
+      }
     });
   });
 
