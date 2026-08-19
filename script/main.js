@@ -241,13 +241,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  //   Testimonial Data & Dynamic Card Rendering
+
+
+  const testimonials = [
+    {
+      quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione voluptatibus cumque libero odio. Commodi sunt, pariatur minus at neque nisi?",
+      image: "asset/images/testimonial/Salman_Khan.jpg",
+      alt: "Salman Khan",
+      author: "Salman Khan",
+      role: "Regular Guest",
+      rating: 5
+    },
+    {
+      quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima similique tempora molestias aperiam ut fuga dolor aliquid ex autem saepe!",
+      image: "asset/images/testimonial/Shah_Rukh.jpg",
+      alt: "Shah Rukh Khan",
+      author: "Shah Rukh Khan",
+      role: "Coffee Lover",
+      rating: 5
+    },
+    {
+      quote: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa non veritatis vero velit odit ut est officiis enim dolores reiciendis adipisicing consectetur!",
+      image: "asset/images/testimonial/Aamir_Khan.jpg",
+      alt: "Aamir Khan",
+      author: "Aamir Khan",
+      role: "Local Resident",
+      rating: 5
+    },
+    {
+      quote: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda et enim porro quidem corporis distinctio accusamus ipsum dolorum explicabo atque.",
+      image: "asset/images/testimonial/Akshay_Kumar.jpg",
+      alt: "Akshay Kumar",
+      author: "Akshay Kumar",
+      role: "Food & Beverage Critic",
+      rating: 5
+    },
+    {
+      quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad reprehenderit, assumenda voluptatibus officiis quasi adipisci debitis sequi ex doloremque quis?",
+      image: "asset/images/testimonial/Ajay_Devgn.jpg",
+      alt: "Ajay Devgn",
+      author: "Ajay Devgn",
+      role: "Regular Guest",
+      rating: 5
+    },
+    {
+      quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nostrum quas autem dignissimos illo nemo rerum, odio molestias doloremque veritatis.",
+      image: "asset/images/testimonial/Hrithik.jpg",
+      alt: "Hrithik Roshan",
+      author: "Hrithik Roshan",
+      role: "Artisan Baker",
+      rating: 5
+    }
+  ];
+
+  function displayTestimonials(itemsToDisplay) {
+    const trackContainer = document.querySelector('.testimonial-track');
+    if (!trackContainer) return;
+
+    trackContainer.innerHTML = itemsToDisplay.map(testimonial => `
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "${testimonial.quote}"
+        </p>
+        <div class="testimonial-avatar">
+          <img src="${testimonial.image}" alt="${testimonial.alt}">
+        </div>
+        <h3 class="testimonial-author">${testimonial.author}</h3>
+        <p class="testimonial-role">${testimonial.role}</p>
+        <div class="rating-stars">${"★".repeat(testimonial.rating)}</div>
+      </div>
+    `).join("");
+  }
+
+  // Render testimonial cards dynamically BEFORE selecting cards for slider
+  displayTestimonials(testimonials);
+
   //   Simple Testimonial Slider (Continuous 1-Direction Infinite Loop)
+
+  const visibleCards = 3;
+  const gap = 24;
 
   const track = document.querySelector(".testimonial-track");
   const cards = document.querySelectorAll(".testimonial-card");
   const prevBtn = document.querySelector(".testimonial-prev");
   const nextBtn = document.querySelector(".testimonial-next");
   const container = document.querySelector(".testimonials-slider-container");
+  const trackContainer = document.querySelector(".testimonial-track-container");
 
   let currentIndex = 0;
   let autoSlide;
@@ -261,11 +341,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function getEffectiveVisibleCards() {
+    const windowWidth = window.innerWidth;
+    if (windowWidth < 600) {
+      return 1; // 1 card on mobile for clean readability
+    } else if (windowWidth < 992) {
+      return Math.min(2, visibleCards); // Max 2 cards on tablet
+    }
+    return Math.min(4, visibleCards); // Desktop configuration (e.g. 3 or 2)
+  }
+
+  function updateCardWidths() {
+    if (!trackContainer) return;
+    const effectiveCards = getEffectiveVisibleCards();
+    const style = window.getComputedStyle(trackContainer);
+    const containerWidth = trackContainer.clientWidth - parseFloat(style.paddingLeft || 0) - parseFloat(style.paddingRight || 0);
+    const totalGap = (effectiveCards - 1) * gap;
+    const calculatedWidth = (containerWidth - totalGap) / effectiveCards;
+
+    const allCards = document.querySelectorAll(".testimonial-card");
+    allCards.forEach(card => {
+      card.style.flex = `0 0 ${calculatedWidth}px`;
+      card.style.width = `${calculatedWidth}px`;
+    });
+  }
 
   function updateSlider() {
     if (!track || !cards.length) return;
+    updateCardWidths();
     const cardWidth = cards[0].offsetWidth;
-    const gap = 24;
     const moveDistance = (cardWidth + gap) * currentIndex;
     track.style.transform = `translateX(-${moveDistance}px)`;
   }
